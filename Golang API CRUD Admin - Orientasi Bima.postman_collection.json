@@ -1,0 +1,508 @@
+{
+	"info": {
+		"_postman_id": "f01877cb-79cd-486b-bfa4-54655f2d5759",
+		"name": "Golang API CRUD Admin - Orientasi Bima",
+		"description": "**Task Orientasi Backend Untuk Karyawan Baru**\n\n**Deskripsi:**\n\nAPI ini digunakan untuk tes kemapuan karyawan baru PT. Solusi Pembayaran Elektronik. Api ini memiliki fitur berupa:\n\n1. Autentikasi(login),\n2. CRUD(Create, Read, Update, Delete) data admin.\n    \n\n**Tools**\n\n1. Golang v1.21.2\n    \n2. Echo version v4.11.2\n    \n3. Mongodb v6.0.11",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30390219"
+	},
+	"item": [
+		{
+			"name": "CRUD",
+			"item": [
+				{
+					"name": "Get All Data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTgxNDc2NTksInVzZXJuYW1lIjoiYmltYWFmcml6YWxfIn0.8LIkXZR3FGSYNiF4dlI0uB8Zx3KpeVEnbPyo3ezB1Cc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/admin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Oct 2023 10:55:44 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "886"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"Success Get All Data\",\n    \"data\": [\n        {\n            \"id\": \"652d0ce5fc85ef0adf0ed692\",\n            \"username\": \"admin\",\n            \"email\": \"admin@gmail.com\",\n            \"password\": \"$2y$10$uRgeNog9Ih8b0JZ7frdfveWK7km0lH0ebHmiXWeSBnhwCoJpvdqnS\"\n        },\n        {\n            \"id\": \"653625e336533d72288d8a87\",\n            \"username\": \"bimaafrizal_\",\n            \"email\": \"bimaafrizal231@gmail.com\",\n            \"password\": \"$2a$10$YwCGWWq0pqBqLFL4X0bIlO6rWnfVtjaM4UXOubDfr8CZ9voossNwi\"\n        },\n        {\n            \"id\": \"65363ff3650d73d694e66ec6\",\n            \"username\": \"bimaafrizal_11\",\n            \"email\": \"bimaafrizal@gmail.com\",\n            \"password\": \"$2a$10$Jb7oxwOtY4DgRBIjUL1VOe9tiiEXPfYghHpNM9T/PAd/NKoEUopAu\"\n        },\n        {\n            \"id\": \"6537914e3963415b55fc12b7\",\n            \"username\": \"bimaafrizal_23\",\n            \"email\": \"bimaafrizal23@gmail.com\",\n            \"password\": \"$2a$10$guAC0YMYC3hRgn2bb/6PMOcR1oFfkl2ICEyhE9M.OjmNk3F4/3GCG\"\n        },\n        {\n            \"id\": \"65379fe8aa9cd153129f059a\",\n            \"username\": \"bimaafrizal23_\",\n            \"email\": \"bimaafrizal232@gmail.com\",\n            \"password\": \"$2a$10$Ar9uwkdQ9kg4968whev4LOe0mWL/ucZq0LW80kQL4BmPIBSSzEFkq\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Users",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTgxNDc2NTksInVzZXJuYW1lIjoiYmltYWFmcml6YWxfIn0.8LIkXZR3FGSYNiF4dlI0uB8Zx3KpeVEnbPyo3ezB1Cc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"bimaafrizal23_\",\r\n    \"email\":\"bimaafrizal232@gmail.com\",\r\n    \"password\":\"bimaafrizal232@gmail.com\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Users",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"bimaafrizal23_\",\r\n    \"email\":\"bimaafrizal232@gmail.com\",\r\n    \"password\":\"bimaafrizal232@gmail.com\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/admin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Oct 2023 10:43:52 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "191"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 201,\n    \"message\": \"Success Create Data\",\n    \"data\": {\n        \"username\": \"bimaafrizal23_\",\n        \"email\": \"bimaafrizal232@gmail.com\",\n        \"password\": \"$2a$10$Ar9uwkdQ9kg4968whev4LOe0mWL/ucZq0LW80kQL4BmPIBSSzEFkq\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get SpecificData",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTgxNDc2NTksInVzZXJuYW1lIjoiYmltYWFmcml6YWxfIn0.8LIkXZR3FGSYNiF4dlI0uB8Zx3KpeVEnbPyo3ezB1Cc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/admin/652d0ce5fc85ef0adf0ed692",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"652d0ce5fc85ef0adf0ed692"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get SpecificData",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/admin/652d0ce5fc85ef0adf0ed692",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"652d0ce5fc85ef0adf0ed692"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Oct 2023 10:55:02 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "211"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"Success Get Specific Data\",\n    \"data\": {\n        \"id\": \"652d0ce5fc85ef0adf0ed692\",\n        \"username\": \"admin\",\n        \"email\": \"admin@gmail.com\",\n        \"password\": \"$2y$10$uRgeNog9Ih8b0JZ7frdfveWK7km0lH0ebHmiXWeSBnhwCoJpvdqnS\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTgxNDc2NTksInVzZXJuYW1lIjoiYmltYWFmcml6YWxfIn0.8LIkXZR3FGSYNiF4dlI0uB8Zx3KpeVEnbPyo3ezB1Cc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/admin/6537914e3963415b55fc12b7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"6537914e3963415b55fc12b7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Data",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/admin/6537914e3963415b55fc12b7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"6537914e3963415b55fc12b7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Oct 2023 10:56:31 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "57"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"Success Delete Data\",\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTgxNDc2NTksInVzZXJuYW1lIjoiYmltYWFmcml6YWxfIn0.8LIkXZR3FGSYNiF4dlI0uB8Zx3KpeVEnbPyo3ezB1Cc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"bimaafrizal_99\",\r\n    \"email\":\"bimaafrizal99@gmail.com\",\r\n    \"password\":\"bimaafrizal@gmail.com\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/admin/6537914e3963415b55fc12b7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"6537914e3963415b55fc12b7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update User",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"bimaafrizal_99\",\r\n    \"email\":\"bimaafrizal99@gmail.com\",\r\n    \"password\":\"bimaafrizal@gmail.com\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/admin/6537914e3963415b55fc12b7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"6537914e3963415b55fc12b7"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Oct 2023 10:56:14 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "190"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 201,\n    \"message\": \"Success Update Data\",\n    \"data\": {\n        \"username\": \"bimaafrizal_99\",\n        \"email\": \"bimaafrizal99@gmail.com\",\n        \"password\": \"$2a$10$KOQv8UGUXv7u3AgZhJNgKuxGT0y/JyAsMXsO2SWJQEwfofulhjAHG\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "Dalam folder ini akan berisi fitur untuk CRUD(Create, Read, Update, Delate).\n\nUntuk mengakses fitur ini pastikan anda sudah login terlebih dahulu."
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"bimaafrizal_\",\r\n    \"password\":\"bimaafrizal@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"bimaafrizal_\",\r\n    \"password\":\"bimaafrizal@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Oct 2023 09:40:59 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "192"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"200\",\n    \"message\": \"success login\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTgxNDc2NTksInVzZXJuYW1lIjoiYmltYWFmcml6YWxfIn0.8LIkXZR3FGSYNiF4dlI0uB8Zx3KpeVEnbPyo3ezB1Cc\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Dalam folder ini terdapat satufitur yaitu login. Fitur login akan mengembalikan bearer code yang digunakan untuk mengakses fitur CRUD."
+		}
+	]
+}
