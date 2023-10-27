@@ -25,11 +25,12 @@ func main() {
 
 	// crud user
 	crudGroup := e.Group("/api")
-	crudGroup.GET("/admin", userController.FindAll, middleware.KeyAuth(middlewares.AuthCheck))
-	crudGroup.GET("/admin/:id", userController.FindById, middleware.KeyAuth(middlewares.AuthCheck))
-	crudGroup.DELETE("/admin/:id", userController.Delete, middleware.KeyAuth(middlewares.AuthCheck))
-	crudGroup.POST("/admin", userController.Create, middleware.KeyAuth(middlewares.AuthCheck))
-	crudGroup.PUT("/admin/:id", userController.Update, middleware.KeyAuth(middlewares.AuthCheck))
+	crudGroup.Use(middleware.KeyAuth(middlewares.AuthCheck))
+	crudGroup.GET("/admin", userController.FindAll)
+	crudGroup.GET("/admin/:id", userController.FindById)
+	crudGroup.DELETE("/admin/:id", userController.Delete)
+	crudGroup.POST("/admin", userController.Create)
+	crudGroup.PUT("/admin/:id", userController.Update)
 
 	//auth
 	e.POST("/api/login", authController.Login)

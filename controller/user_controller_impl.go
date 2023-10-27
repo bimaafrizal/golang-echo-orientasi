@@ -74,12 +74,14 @@ func (controller *UserControllerImpl) Create(c echo.Context) error {
 		Email:    user.Email,
 	}
 
-	err = controller.UserRepository.Create(&userUpdateHash)
+	err, id := controller.UserRepository.Create(&userUpdateHash)
+	dataResponse := helper.ResponseWithId{Id: id.Hex(), Username: user.Username, Email: user.Email, Password: userUpdateHash.Password}
+
 	if err != nil {
 		return helper.BadRequestResponse(err)
 	}
 
-	response := helper.Response{Code: http.StatusCreated, Message: "Success Create Data", Data: userUpdateHash}
+	response := helper.Response{Code: http.StatusCreated, Message: "Success Create Data", Data: &dataResponse}
 	return c.JSON(http.StatusCreated, response)
 }
 
@@ -127,8 +129,8 @@ func (controller *UserControllerImpl) Update(c echo.Context) error {
 		return err
 	}
 
-	response := helper.Response{Code: http.StatusCreated, Message: "Success Update Data", Data: update}
-	return c.JSON(http.StatusCreated, response)
+	response := helper.Response{Code: http.StatusOK, Message: "Success Update Data", Data: update}
+	return c.JSON(http.StatusOK, response)
 }
 
 func (controller *UserControllerImpl) Delete(c echo.Context) error {

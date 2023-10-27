@@ -21,10 +21,10 @@ func AuthCheck(tokenString string, c echo.Context) (bool, error) {
 	envVariable := os.Getenv("JWT_SECRET_KEY")
 
 	claims := TokenClaims{}
-	parsed, _ := jwt.ParseWithClaims(tokenString, &claims, func(token *jwt.Token) (interface{}, error) {
+	parsed, err := jwt.ParseWithClaims(tokenString, &claims, func(token *jwt.Token) (interface{}, error) {
 		return []byte(envVariable), nil
 	})
-	if parsed == nil {
+	if err != nil {
 		return false, errors.New("invalid token")
 	}
 	if !parsed.Valid {

@@ -56,16 +56,18 @@ func (repository *UserRepositoryImpl) FindById(id primitive.ObjectID) (*model.Us
 	return &users, nil
 }
 
-func (repository *UserRepositoryImpl) Create(user *helper.CreateUserRequest) error {
+func (repository *UserRepositoryImpl) Create(user *helper.CreateUserRequest) (error, primitive.ObjectID) {
 	err := repository.validator.Struct(user)
 	if err != nil {
-		return err
+		return err, primitive.NilObjectID
 	}
-	_, err = repository.db.Collection(model.TableUsers).InsertOne(context.Background(), user)
+	data, err := repository.db.Collection(model.TableUsers).InsertOne(context.Background(), user)
 	if err != nil {
-		return err
+		return err, primitive.NilObjectID
 	}
-	return nil
+
+	id := data.InsertedID.(primitive.ObjectID)
+	return nil, id
 }
 
 func (repository *UserRepositoryImpl) Update(user *helper.UpdateUserRequest, id primitive.ObjectID) (*helper.UpdateUserRequest, error) {
