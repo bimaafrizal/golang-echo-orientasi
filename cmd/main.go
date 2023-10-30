@@ -18,13 +18,14 @@ func main() {
 	userController := controller.NewUserController(userRepository)
 	authController := controller.NewAuthController(db, validation)
 
-	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
+	E := app.InitEcho()
+
+	E.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Hello World Welcome To Orientasi Backend Golang")
 	})
 
 	// crud user
-	crudGroup := e.Group("/api")
+	crudGroup := E.Group("/api")
 	crudGroup.Use(middleware.KeyAuth(middlewares.AuthCheck))
 	crudGroup.GET("/admin", userController.FindAll)
 	crudGroup.GET("/admin/:id", userController.FindById)
@@ -33,9 +34,9 @@ func main() {
 	crudGroup.PUT("/admin/:id", userController.Update)
 
 	//auth
-	e.POST("/api/login", authController.Login)
+	E.POST("/api/login", authController.Login)
 
-	err := e.Start(":8080")
+	err := E.Start(":8080")
 	if err != nil {
 		panic(err)
 	}
